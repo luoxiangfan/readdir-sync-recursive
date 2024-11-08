@@ -12,7 +12,7 @@ npm install @lxf2513/readdir-sync-recursive
 ## Usage
 
 ```js
-import readdirSyncRecursive from ''
+import readdirSyncRecursive from '@lxf2513/readdir-sync-recursive'
 
 readdirSyncRecursive('/path/source')
 ```
