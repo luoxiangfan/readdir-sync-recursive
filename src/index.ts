@@ -27,12 +27,12 @@ export default function (
         const resultPath = nodePath.join(dirpath, readdirResult[i]);
         const relativeResultPath = nodePath.relative(path, resultPath);
         const absolutePath = nodePath.join(process.cwd(), resultPath);
-        let pushPath = relativeResultPath;
-        returnType === 'relativePath'
-          ? (pushPath = resultPath)
-          : returnType === 'absolutePath'
-            ? (pushPath = absolutePath)
-            : relativeResultPath;
+        const pushPath =
+          returnType === 'relativePath'
+            ? resultPath
+            : returnType === 'absolutePath'
+              ? absolutePath
+              : relativeResultPath;
         readdirResults.push(pushPath);
         if (isDirectory(resultPath)) {
           pathsQueue.push(resultPath);
