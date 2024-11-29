@@ -1,10 +1,10 @@
-import fs from 'node:fs';
-import nodePath from 'node:path';
-import process from 'node:process';
+import { statSync, readdirSync } from 'node:fs';
+import { join, relative } from 'node:path';
+import { cwd } from 'node:process';
 
 function isDirectory(path: string) {
   try {
-    const stat = fs.statSync(path);
+    const stat = statSync(path);
     return stat.isDirectory();
   } catch {
     return false;
@@ -22,11 +22,11 @@ export default function (
   const pathsQueue = [path];
   function readdir(dirpath: string) {
     try {
-      const readdirResult = fs.readdirSync(dirpath, { encoding: 'utf-8' });
+      const readdirResult = readdirSync(dirpath, { encoding: 'utf-8' });
       for (let i = 0; i < readdirResult.length; i++) {
-        const resultPath = nodePath.join(dirpath, readdirResult[i]);
-        const relativeResultPath = nodePath.relative(path, resultPath);
-        const absolutePath = nodePath.join(process.cwd(), resultPath);
+        const resultPath = join(dirpath, readdirResult[i]);
+        const relativeResultPath = relative(path, resultPath);
+        const absolutePath = join(cwd(), resultPath);
         const pushPath =
           returnType === 'relativePath'
             ? resultPath
