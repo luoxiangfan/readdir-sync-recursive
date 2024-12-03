@@ -41,6 +41,6 @@ export default function (
       console.error(error);
     }
   }
-  pathsQueue.forEach(i => readdir(i));
+  pathsQueue.forEach((i) => readdir(i));
   return readdirResults;
 }
