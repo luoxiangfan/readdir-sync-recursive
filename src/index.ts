@@ -4,8 +4,7 @@ import { cwd } from 'node:process';
 
 function isDirectory(path: string) {
   try {
-    const stat = statSync(path);
-    return stat.isDirectory();
+    return statSync(path).isDirectory();
   } catch {
     return false;
   }
@@ -42,8 +41,6 @@ export default function (
       console.error(error);
     }
   }
-  for (let i = 0; i < pathsQueue.length; i++) {
-    readdir(pathsQueue[i]);
-  }
+  pathsQueue.forEach(i => readdir(i));
   return readdirResults;
 }
