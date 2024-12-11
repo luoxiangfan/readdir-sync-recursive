@@ -18,7 +18,6 @@ export default function (
     return [];
   }
   const readdirResults: string[] = [];
-  const pathsQueue = [path];
   function readdir(dirpath: string) {
     try {
       const readdirResult = readdirSync(dirpath, { encoding: 'utf-8' });
@@ -34,15 +33,13 @@ export default function (
               : relativeResultPath;
         readdirResults.push(pushPath);
         if (isDirectory(resultPath)) {
-          pathsQueue.push(resultPath);
+          readdir(resultPath);
         }
       }
     } catch (error) {
       console.error(error);
     }
   }
-  for (let i = 0; i < pathsQueue.length; i++) {
-    readdir(pathsQueue[i]);
-  }
+  readdir(path);
   return readdirResults;
 }
