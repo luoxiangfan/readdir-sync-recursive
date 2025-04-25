@@ -1,6 +1,6 @@
 {
   "name": "@lxf2513/readdir-sync-recursive",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Reads the contents of the directory synchronously and recursively.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -47,9 +47,9 @@
   },
   "homepage": "https://github.com/luoxiangfan/readdir-sync-recursive#readme",
   "devDependencies": {
-    "@types/node": "^22.13.9",
+    "@types/node": "^22.15.2",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.2",
+    "typescript": "^5.8.3",
     "unbuild": "^3.5.0"
   },
   "publishConfig": {
